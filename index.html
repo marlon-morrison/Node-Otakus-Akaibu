@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Cars</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <form action="" id="cars-by-make">
+                    <h2>car my make</h2>
+                    <input type="text" id="carBymake">
+                    <br>
+                    <input type="submit" value="convert">
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <form action="" id="cars-by-id">
+                    <h2>car by id</h2>
+                    <input type="text" id="carByid">
+                    <br>
+                    <input type="submit" value="convert">
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <form action="" id="cars-by-year">
+                    <h2>car by year</h2>
+                    <input type="text" id="carByyear">
+                    <br>
+                    <input type="submit" value="convert">
+                </form>
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+        <li id="output"></li>
+    </ul>
+    <img src="" alt="" srcset="">
+    <script>
+        let cars_by_make = document.getElementById("cars-by-make");
+        let cars_by_id = document.getElementById("cars-by-id");
+        let cars_by_year = document.getElementById("cars-by-year");
+        let output = document.getElementById("output");
+
+        cars_by_make.addEventListener("submit", () => {
+            event.preventDefault();
+            let carBymake = document.getElementById("carBymake").value;
+            fetch(`http://localhost:3000/api/cars/make/${carBymake}`)
+            .then(Response => Response.json())
+            .then(data => {
+                output.innerText = JSON.stringify(data,undefined,4);
+            })
+        });
+
+        cars_by_id.addEventListener("submit", () => {
+            event.preventDefault();
+            let carByid = document.getElementById("carByid").value;
+            fetch(`http://localhost:3000/api/cars/${carByid}`)
+            .then(Response => Response.json())
+            .then(data => {
+                output.innerText = JSON.stringify(data,undefined,4);
+            })
+        });
+
+        cars_by_year.addEventListener("submit", () => {
+            event.preventDefault();
+            let carByyear = document.getElementById("carByyear").value;
+            fetch(`http://localhost:3000/api/cars/year/${carByyear}`)
+            .then(Response => Response.json())
+            .then(data => {
+                output.innerText = JSON.stringify(data,undefined,4);
+            })
+        });
+    </script>
+</body>
+</html>
