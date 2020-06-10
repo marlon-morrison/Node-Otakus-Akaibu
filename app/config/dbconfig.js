@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     host:"us-cdbr-east-05.cleardb.net",
     user:"b84e881a541eec",
     password:"2baed8c8",
-    database:"heroku_874e175d74cce9f"
+    database:"Acharacters"
 });
 
 module.exports = pool;
